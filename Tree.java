@@ -1,5 +1,6 @@
 package com.codewithmosh;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Tree {
@@ -110,7 +111,6 @@ public class Tree {
             return false;
            return equals(root, other.root);
     }
-
     private boolean equals(Node first, Node second){
          if(first == null && second == null)
              return true;
@@ -119,5 +119,35 @@ public class Tree {
                      equals(first.leftChild, second.leftChild) &&
                      equals(first.rightChild , second.rightChild);
          return false;
+    }
+
+    public boolean isBinarySearchTree() {
+           return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    private boolean isBinarySearchTree(Node root, int min, int max){
+        if(root == null)
+            return true;
+        if(root.value < min || root.value > max)
+            return false;
+        return isBinarySearchTree(root.leftChild, min, root.value - 1)
+          && isBinarySearchTree(root.rightChild, root.value + 1, max);
+    }
+
+    public void printNodesAtDistance(int distance){
+           printNodesAtDistance(root, distance);
+
+    }
+    private void printNodesAtDistance(Node root, int distance){
+        if(root == null)
+            return;
+        if(distance == 0)
+            System.out.println(root.value);
+
+        printNodesAtDistance(root.leftChild, distance -1);
+        printNodesAtDistance(root.rightChild, distance -1);
+    }
+
+    public void traverseLevelOrder() {
+        
     }
 }
