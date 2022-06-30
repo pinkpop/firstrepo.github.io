@@ -30,8 +30,9 @@ class Solution {
     }
 }
         
-        
-        //version 2: 非递归方法 stack
+        //version 2 : Divide and conquer
+
+        //version 3: 非递归方法 stack
 //         Stack<TreeNode> stack = new Stack<TreeNode>();
 //         List<Integer> result = new ArrayList<Integer>();
         
