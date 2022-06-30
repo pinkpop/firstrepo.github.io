@@ -14,24 +14,34 @@
  * }
  */
 class Solution {
-    List<Integer> res = new LinkedList<>();
-    public List<Integer> preorderTraversal(TreeNode root) {
-       //version1 递归
-        traverse(root);
-        return res;
-    }
-    void traverse(TreeNode root){
-        if(root == null){
-            return;
-        }
-        res.add(root.val);
-        traverse(root.left);
-        traverse(root.right);
-    }
-}
+//     List<Integer> res = new LinkedList<>();
+//     public List<Integer> preorderTraversal(TreeNode root) {
+//        //version1 递归
+//         traverse(root);
+//         return res;
+//     }
+//     void traverse(TreeNode root){
+//         if(root == null){
+//             return;
+//         }
+//         res.add(root.val);
+//         traverse(root.left);
+//         traverse(root.right);
+//     }
+// }
         
         //version 2 : Divide and conquer
-
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new LinkedList<>();
+        if(root == null){
+            return res;
+        }
+        res.add(root.val);
+        res.addAll(preorderTraversal(root.left));
+        res.addAll(preorderTraversal(root.right));
+        return res;
+    }
+}
         //version 3: 非递归方法 stack
 //         Stack<TreeNode> stack = new Stack<TreeNode>();
 //         List<Integer> result = new ArrayList<Integer>();
